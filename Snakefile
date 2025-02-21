@@ -22,7 +22,7 @@ mask_sites = [
 ]
 
 # cannot have underscores in these for Nextstrain Community builds
-for key in ["sequence_set", "roots", "date_ranges"]:
+for key in ["sequence_sets", "roots", "date_ranges"]:
     assert all("_" not in val for val in config[key]), f"_ in {config[key]=}"
 assert "_" not in repo, repo
 
@@ -35,7 +35,7 @@ wildcard_constraints:
 rule all:
     input:
         expand(
-            "auspice/{repo}_{sequence_set}_{date_range}_{root}.json",
+            f"auspice/{repo}_" + "{sequence_set}_{date_range}_{root}.json",
             sequence_set=sequence_sets,
             root=roots,
             date_range=date_ranges,
@@ -303,6 +303,6 @@ rule final_jsons:
     input:
         json="results/{sequence_set}/root-{root}_{date_range}.json",
     output:
-        json="auspice/{repo}_{sequence_set}_{date_range}_{root}.json",
+        json=f"auspice/{repo}_" + "{sequence_set}_{date_range}_{root}.json",
     shell:
         "cp {input.json} {output.json}"
