@@ -1,4 +1,4 @@
-name: early_SARS2_trees
+name: early-SARS2-trees
 
 channels:
   - conda-forge

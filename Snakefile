@@ -35,7 +35,7 @@ wildcard_constraints:
 rule all:
     input:
         expand(
-            f"auspice/{repo}_" + "{sequence_set}_{date_range}_{root}.json",
+            f"auspice/{repo}-" + "{sequence_set}-{date_range}-{root}.json",
             sequence_set=sequence_sets,
             root=roots,
             date_range=date_ranges,
@@ -303,6 +303,6 @@ rule final_jsons:
     input:
         json="results/{sequence_set}/root-{root}_{date_range}.json",
     output:
-        json=f"auspice/{repo}_" + "{sequence_set}_{date_range}_{root}.json",
+        json=f"auspice/{repo}-" + "{sequence_set}-{date_range}-{root}.json",
     shell:
         "cp {input.json} {output.json}"
