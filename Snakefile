@@ -11,6 +11,7 @@ configfile: "config.yaml"
 sequence_sets = config["sequence_sets"]
 roots = config["roots"]
 date_ranges = config["date_ranges"]
+repo = config["repo"]
 mask_sites = [
     site
     for sublist in (
@@ -22,7 +23,8 @@ mask_sites = [
 
 # cannot have underscores in these for Nextstrain Community builds
 for key in ["sequence_set", "roots", "date_ranges"]:
-    assert all("_" not in val for val in config[key]), f"_ in {config[key]=}" 
+    assert all("_" not in val for val in config[key]), f"_ in {config[key]=}"
+assert "_" not in repo, repo
 
 wildcard_constraints:
     root="|".join(map(re.escape, roots)),
@@ -33,7 +35,7 @@ wildcard_constraints:
 rule all:
     input:
         expand(
-            "auspice/{sequence_set}/{date_range}/{root}.json",
+            "auspice/{repo}_{sequence_set}_{date_range}_{root}.json",
             sequence_set=sequence_sets,
             root=roots,
             date_range=date_ranges,
@@ -301,6 +303,6 @@ rule final_jsons:
     input:
         json="results/{sequence_set}/root-{root}_{date_range}.json",
     output:
-        json="auspice/{sequence_set}/{date_range}/{root}.json",
+        json="auspice/{repo}_{sequence_set}_{date_range}_{root}.json",
     shell:
         "cp {input.json} {output.json}"

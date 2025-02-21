@@ -41,7 +41,7 @@ auspice_config: data/auspice_config.json
 
 # additional arguments to augur export
 augur_export_args:
-  build-url: https://github.com/sars2phylo/early_SARS2_trees
+  build-url: https://github.com/sars2phylo/early-SARS2-trees
   description: data/description.md
 
 # name of repo
