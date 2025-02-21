@@ -1,0 +1,25 @@
+joint_WHO_China_sample_id,strain,accession,from_market,addtl_annotations
+S01,hCoV-19/Wuhan/IPBCAMS-WH-05/2020,EPI_ISL_403928,True,2019 market sequence
+S02,hCoV-19/Wuhan/IPBCAMS-WH-01/2019,EPI_ISL_402123,True,2019 market sequence
+S03,hCoV-19/Wuhan/WH01/2019,EPI_ISL_406798,True,2019 market sequence
+S04,hCoV-19/Wuhan/WIV02/2019,EPI_ISL_402127,True,2019 market sequence
+S04,hCoV-19/Wuhan/IME-WH02/2019,EPI_ISL_529214,True,2019 market sequence
+S04,hCoV-19/Wuhan/HBCDC-HB-02/2019,EPI_ISL_412898,True,2019 market sequence
+S04,hCoV-19/Wuhan/IVDC-HB-GX02/2019,EPI_ISL_434534,True,2019 market sequence
+S05,hCoV-19/Wuhan/IPBCAMS-WH-04/2019,EPI_ISL_403929,True,2019 market sequence
+S05,hCoV-19/Wuhan/IVDC-HB-04/2020,EPI_ISL_402120,True,2019 market sequence
+S06,Wuhan-Hu-1,MN908947.3,True,2019 market sequence
+S07,hCoV-19/Wuhan/WHU01/2020,EPI_ISL_406716,True,2019 market sequence
+S08,hCoV-19/Wuhan/IME-WH04/2019,EPI_ISL_529216,True,2019 market sequence
+S08,hCoV-19/Wuhan/WIV07/2019,EPI_ISL_402130,True,2019 market sequence
+S09,hCoV-19/Wuhan/WH03/2020,EPI_ISL_406800,True,2019 market sequence
+S09,hCoV-19/Wuhan/WHU02/2020,EPI_ISL_406717,True,2019 market sequence
+S10,hCoV-19/Wuhan/HBCDC-HB-03/2019,EPI_ISL_412899,True,2019 market sequence
+S10,hCoV-19/Wuhan/IPBCAMS-WH-02/2019,EPI_ISL_403931,True,2019 market sequence
+S10,hCoV-19/Wuhan/WIV04/2019,EPI_ISL_402124,True,2019 market sequence
+S10,hCoV-19/Wuhan/HBCDC-HB-01/2019,EPI_ISL_402132,True,2019 market sequence
+S11,hCoV-19/Wuhan/IPBCAMS-WH-03/2019,EPI_ISL_403930,True,2019 market sequence
+S11,hCoV-19/Wuhan/WIV05/2019,EPI_ISL_402128,True,2019 market sequence
+S12,hCoV-19/Wuhan/WIV06/2019,EPI_ISL_402129,True,2019 market sequence
+S12,hCoV-19/Wuhan/IME-WH03/2019,EPI_ISL_529215,True,2019 market sequence
+S13,hCoV-19/Wuhan/IME-WH01/2019,EPI_ISL_529213,False,2019 non-market sequence

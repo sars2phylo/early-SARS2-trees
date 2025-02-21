@@ -1,0 +1,126 @@
+# =======================================================================================
+# Configuration file
+# =======================================================================================
+
+# ------- Specify the sequence sets to analyze ------------------------------------------
+
+# metadata for each sequence set must have these columns
+metadata_req_cols:
+  - accession
+  - strain
+  - date  # in YYYY-MM-DD format
+  - addtl_annotations
+
+# reference sequence for building alignment (not included separately in tree)
+reference_sequence: data/reference_sequence.fa  # Wuhan-Hu-1, NC_045512.2
+
+# mask these sites (specified as list of integer sites or 2-tuples of inclusive ranges
+mask_sites: [[1, 222], [29700, 29903]]
+
+# maximum number of unmasked sites that are N (ambiguous or gap) for an aligned
+# sequence before we raise an error
+max_unmasked_n: 1500
+
+# add metadata giving the following information from alignment, using sequences
+# with ambiguous nucleotide identities inferred from tree
+metadata_from_alignment:
+  haplotypes:
+    haplotype_8782_28144:
+      sites: [8782, 28144]
+      values:
+        TC: TC (lineage A)
+        CT: CT (lineage B)
+        TT: TT (A-B intermediate)
+        CC: CC (A-B intermediate)
+  mutations_from:
+    mutations_from_recCA: data/recCA.fa  # recombinant common ancestor
+    mutations_from_RaTG13: data/RaTG13.fa  # RaTG13 bat SARSr-CoV
+
+# Nextstrain auspice configuration file
+auspice_config: data/auspice_config.json
+
+# additional arguments to augur export
+augur_export_args:
+  build-url: https://github.com/sars2phylo/early_SARS2_trees
+  description: data/description.md
+
+# candidate roots
+roots:
+  lineage-A: data/candidate_roots/lineage-A.fa
+  lineage-B: data/candidate_roots/lineage-B.fa
+  lineage-A-C18060T: data/candidate_roots/lineage-A-C18060T.fa
+  lineage-A-C29095T: data/candidate_roots/lineage-A-C29095T.fa
+
+# date ranges for sequences to include (null means no limit, inclusive)
+date_ranges:
+  Jan-31-2020: [null, 2020-01-31]
+  Feb-15-2020: [null, 2020-02-15]
+
+# For each sequence set, specify:
+#  - fastas : lists FASTAs w sequences, first space-delimited word of header is accession
+#  - metadata : CSV that must have columns in `metadata_req_cols`
+#  - length_range : raise error if any non-dropped sequence has length outside this range
+#  - drop_accessions : list of accessions to drop
+# Note that accessions in `metadata` and `fastas` are normalized to remove Genbank
+# versioning by dropping anything after "." (eg, OR240358.1 -> OR240358).
+sequence_sets:
+
+  lv_2024:
+    name: Lv et al (2024)
+    fastas:
+      - data/lv_2024/genbank_sequences.fa
+      - data/lv_2024/gisaid_sequences.fa
+    metadata: data/lv_2024/all_accessions.csv
+    length_range: [28000, 31000]
+    drop_accessions:
+      - OR240378  # SH-P202-2-Wuhan/2020-01-29, over 2000 non-masked N's
+      - OR240356  # SH-P249-2-Unclear/2020-02-09, over 2000 non-masked N's
+      - OR240359  # SH-P213-B-2-Europe-Germany/2020-02-01, has 1972 unmasked N's
+      # In section 2.6 of their Method, Lv et al (2024) say they drop CC or TT genotypes
+      # not in "B0" as possibly erroneous. Those are listed below as taken from the Lv et al
+      # supplementary table:
+      - EPI_ISL_451390  # CC
+      - EPI_ISL_451353  # CC
+      - EPI_ISL_451351  # CC
+      - EPI_ISL_451320  # CC
+      - EPI_ISL_451319  # CC
+      - EPI_ISL_451330  # CC
+      - EPI_ISL_451389  # CC
+      - EPI_ISL_451337  # CC
+      - EPI_ISL_451332  # CC
+      - EPI_ISL_453783  # CC
+      - EPI_ISL_452363  # CC
+      - EPI_ISL_451325  # CC
+      - EPI_ISL_451333  # CC
+      - EPI_ISL_451322  # CC
+      - EPI_ISL_454919  # CC
+      - EPI_ISL_451394  # CC
+      - EPI_ISL_451317  # CC
+      - EPI_ISL_413017  # CC
+      - EPI_ISL_430729  # CC
+      - EPI_ISL_451377  # CC
+      - EPI_ISL_451076  # CC
+      - EPI_ISL_452361  # CC
+      - EPI_ISL_451342  # CC
+      - EPI_ISL_451355  # CC
+      - EPI_ISL_454974  # CC
+      - EPI_ISL_454952  # CC
+      - EPI_ISL_451318  # CC
+      - EPI_ISL_451347  # CC
+      - EPI_ISL_454973  # CC
+      - EPI_ISL_455366  # CC
+      - EPI_ISL_455365  # CC
+      - EPI_ISL_455370  # CC
+      - EPI_ISL_539558  # CC
+
+  crits-christoph_2024:
+    name: Crits-Christoph et al (2024)
+    fastas:
+      - data/crits-christoph_2024/gisaid_sequences.fa
+      - data/crits-christoph_2024/custom_sequences.fa
+      - data/crits-christoph_2024/genbank_sequences.fa
+      - data/crits-christoph_2024/ngdc_sequences.fa
+    metadata: data/crits-christoph_2024/seq_metadata.csv
+    length_range: [28000, 31000]
+    drop_accessions:
+      - EPI_ISL_1143994  # not in GISAID despite being in Crits-Christoph sequence set

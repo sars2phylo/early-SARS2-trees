@@ -1,0 +1,9 @@
+.*
+!.git*
+_*
+*.out
+
+data/crits-christoph_2024/gisaid_sequences.fa
+data/lv_2024/gisaid_sequences.fa
+
+results/*

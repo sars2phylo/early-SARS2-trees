@@ -1,0 +1,5 @@
+name,strain,source,accession,date,joint_WHO_China_sample_id,addtl_annotations
+A20_iVar_mindepth15|2020-01-01,Huanan_Market_A20,custom,Huanan_Market_A20,2020-01-01,,2020 market environment
+F13_SRR23971580_viralconsensus_min15|2020-01-01,Huanan_Market_F13,custom,Huanan_Market_F13,2020-01-01,,2020 market environment
+F54_SRR23971582_viralconsensus|2020-01-01,Huanan_Market_F54,custom,Huanan_Market_F54,2020-01-01,,2020 market environment
+B5_SRR23971484_viralconsensus|2020-01-01,Huanan_Market_B5,custom,Huanan_Market_B5,2020-01-01,,2020 market environment
