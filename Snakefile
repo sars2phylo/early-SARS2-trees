@@ -20,6 +20,10 @@ mask_sites = [
     for site in sublist
 ]
 
+# cannot have underscores in these for Nextstrain Community builds
+for key in ["sequence_set", "roots", "date_ranges"]:
+    assert all("_" not in val for val in config[key]), f"_ in {config[key]=}" 
+
 wildcard_constraints:
     root="|".join(map(re.escape, roots)),
     date_range="|".join(map(re.escape, date_ranges)),

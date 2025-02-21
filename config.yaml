@@ -44,6 +44,9 @@ augur_export_args:
   build-url: https://github.com/sars2phylo/early_SARS2_trees
   description: data/description.md
 
+# name of repo
+repo: early-SARS2-trees
+
 # candidate roots
 roots:
   lineage-A: data/candidate_roots/lineage-A.fa
@@ -65,12 +68,12 @@ date_ranges:
 # versioning by dropping anything after "." (eg, OR240358.1 -> OR240358).
 sequence_sets:
 
-  lv_2024:
+  lv2024:
     name: Lv et al (2024)
     fastas:
-      - data/lv_2024/genbank_sequences.fa
-      - data/lv_2024/gisaid_sequences.fa
-    metadata: data/lv_2024/all_accessions.csv
+      - data/lv2024/genbank_sequences.fa
+      - data/lv2024/gisaid_sequences.fa
+    metadata: data/lv2024/all_accessions.csv
     length_range: [28000, 31000]
     drop_accessions:
       - OR240378  # SH-P202-2-Wuhan/2020-01-29, over 2000 non-masked N's
@@ -113,14 +116,14 @@ sequence_sets:
       - EPI_ISL_455370  # CC
       - EPI_ISL_539558  # CC
 
-  crits-christoph_2024:
+  crits-christoph2024:
     name: Crits-Christoph et al (2024)
     fastas:
-      - data/crits-christoph_2024/gisaid_sequences.fa
-      - data/crits-christoph_2024/custom_sequences.fa
-      - data/crits-christoph_2024/genbank_sequences.fa
-      - data/crits-christoph_2024/ngdc_sequences.fa
-    metadata: data/crits-christoph_2024/seq_metadata.csv
+      - data/crits-christoph2024/gisaid_sequences.fa
+      - data/crits-christoph2024/custom_sequences.fa
+      - data/crits-christoph2024/genbank_sequences.fa
+      - data/crits-christoph2024/ngdc_sequences.fa
+    metadata: data/crits-christoph2024/seq_metadata.csv
     length_range: [28000, 31000]
     drop_accessions:
       - EPI_ISL_1143994  # not in GISAID despite being in Crits-Christoph sequence set

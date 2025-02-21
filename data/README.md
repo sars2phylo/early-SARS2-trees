@@ -22,6 +22,6 @@ Candidate root sequences are in [./candidate_roots/](candidate_roots):
 
 - Sequence sets (see READMEs within each subdirectory for details):
 
-  - [./lv_2024/](lv_2024)
+  - [./lv2024/](lv2024)
 
-  - [./crits-christoph_2024/](crits-christoph_2024)
+  - [./crits-christoph2024/](crits-christoph2024)
