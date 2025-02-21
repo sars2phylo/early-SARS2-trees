@@ -115,6 +115,21 @@ sequence_sets:
       - EPI_ISL_455365  # CC
       - EPI_ISL_455370  # CC
       - EPI_ISL_539558  # CC
+      # A set of viruses from Feb-2020 all sequenced in a batch from Saudi Arabia
+      # all on a long branch with a substantial number of shared mutations that
+      # could indicate sequencing error; these sequences are also excluded by
+      # Crits-Christoph et al (2024) so excluding them from this dataset too:
+      - EPI_ISL_489996  # SaudiArabia/477/2020, 2020-02-03
+      - EPI_ISL_489997  # SaudiArabia/492/2020, 2020-02-04
+      - EPI_ISL_489998  # SaudiArabia/509/2020, 2020-02-09
+      - EPI_ISL_489999  # SaudiArabia/518/2020, 2020-02-10
+      - EPI_ISL_490000  # SaudiArabia/523/2020, 2020-02-10
+      - EPI_ISL_490001  # SaudiArabia/545/2020, 2020-02-13
+      - EPI_ISL_490002  # SaudiArabia/553/2020, 2020-02-13
+      # Other sequences that seem to have errors
+      - EPI_ISL_408485  # Beijing/IVDC-BJ-005/2020, has private "mutations" at 5 consecutive sites (24140 - 24144) that probably represent sequencing errors
+      - EPI_ISL_451340  # Sichuan/SC-NJ-091/2020, has five private "mutations" clustered at sites 3174 - 3181 that probably represent sequencing errors
+      - EPI_ISL_962868  # Shandong/2020C1240764/2020, has large number of private "mutations" on long branch that are probably errors
 
   crits-christoph2024:
     name: Crits-Christoph et al (2024)
