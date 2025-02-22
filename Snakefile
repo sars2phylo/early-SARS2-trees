@@ -12,6 +12,7 @@ sequence_sets = config["sequence_sets"]
 roots = config["roots"]
 date_ranges = config["date_ranges"]
 repo = config["repo"]
+auspice_configs = config["auspice_configs"]
 mask_sites = [
     site
     for sublist in (
@@ -22,7 +23,7 @@ mask_sites = [
 ]
 
 # cannot have underscores in these for Nextstrain Community builds
-for key in ["sequence_sets", "roots", "date_ranges"]:
+for key in ["sequence_sets", "roots", "date_ranges", "auspice_configs"]:
     assert all("_" not in val for val in config[key]), f"_ in {config[key]=}"
 assert "_" not in repo, repo
 
@@ -30,15 +31,17 @@ wildcard_constraints:
     root="|".join(map(re.escape, roots)),
     date_range="|".join(map(re.escape, date_ranges)),
     sequence_set="|".join(map(re.escape, sequence_sets)),
+    auspice_config="|".join(map(re.escape, auspice_configs)),
 
 
 rule all:
     input:
         expand(
-            f"auspice/{repo}_" + "{sequence_set}-{date_range}-{root}.json",
+            f"auspice/{repo}_" + "{sequence_set}-{date_range}-{root}-{auspice_config}.json",
             sequence_set=sequence_sets,
             root=roots,
             date_range=date_ranges,
+            auspice_config=auspice_configs,
         ),
 
 
@@ -249,9 +252,9 @@ rule export_tree:
         nt_muts="results/{sequence_set}/root-{root}_{date_range}_nt-muts.json",
         branch_lengths="results/{sequence_set}/root-{root}_{date_range}_branch_lengths.json",
         metadata="results/{sequence_set}/root-{root}_{date_range}_metadata.csv",
-        auspice_config=config["auspice_config"],
+        auspice_config=lambda wc: auspice_configs[wc.auspice_config],
     output:
-        tree="results/{sequence_set}/root-{root}_{date_range}_no_mutation_branch_labels.json",
+        tree="results/{sequence_set}/root-{root}_{date_range}_{auspice_config}_no_mutation_branch_labels.json",
     params:
         title=lambda wc: (
             "Early SARS-CoV-2 tree using sequences from "
@@ -293,7 +296,7 @@ rule add_mutation_branch_labels:
     input:
         tree="results/{sequence_set}/root-{root}_{date_range}_no_mutation_branch_labels.json",
     output:
-        tree="results/{sequence_set}/root-{root}_{date_range}.json",
+        tree="results/{sequence_set}/root-{root}_{date_range}_{auspice_config}.json",
     script:
         "scripts/add_mutation_branch_labels.py"
 
@@ -301,8 +304,8 @@ rule add_mutation_branch_labels:
 rule final_jsons:
     """Copy the final JSONs to a separate subdirectory."""
     input:
-        json="results/{sequence_set}/root-{root}_{date_range}.json",
+        json="results/{sequence_set}/root-{root}_{date_range}_{auspice_config}.json",
     output:
-        json=f"auspice/{repo}_" + "{sequence_set}-{date_range}-{root}.json",
+        json=f"auspice/{repo}_" + "{sequence_set}-{date_range}-{root}-{auspice_config}.json",
     shell:
         "cp {input.json} {output.json}"

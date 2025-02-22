@@ -36,8 +36,12 @@ metadata_from_alignment:
     mutations_from_recCA: data/recCA.fa  # recombinant common ancestor
     mutations_from_RaTG13: data/RaTG13.fa  # RaTG13 bat SARSr-CoV
 
-# Nextstrain auspice configuration file
-auspice_config: data/auspice_config.json
+# Nextstrain auspice configuration files
+# We need separate configs for coloring by default by mutations or dates
+# due to bug in Nextstrain narratives which can only show default coloring.
+auspice_configs:
+  colormuts: data/auspice_config_colormuts.json
+  colordate: data/auspice_config_colordate.json
 
 # additional arguments to augur export
 augur_export_args:
