@@ -294,7 +294,7 @@ rule export_tree:
 rule add_mutation_branch_labels:
     """Add branch labels as mutations."""
     input:
-        tree="results/{sequence_set}/root-{root}_{date_range}_no_mutation_branch_labels.json",
+        tree="results/{sequence_set}/root-{root}_{date_range}_{auspice_config}_no_mutation_branch_labels.json",
     output:
         tree="results/{sequence_set}/root-{root}_{date_range}_{auspice_config}.json",
     script:

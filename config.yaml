@@ -41,7 +41,7 @@ metadata_from_alignment:
 # due to bug in Nextstrain narratives which can only show default coloring.
 auspice_configs:
   colormuts: data/auspice_config_colormuts.json
-  colordate: data/auspice_config_colordate.json
+  colordates: data/auspice_config_colordates.json
 
 # additional arguments to augur export
 augur_export_args:
