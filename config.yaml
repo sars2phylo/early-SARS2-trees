@@ -42,6 +42,8 @@ metadata_from_alignment:
 auspice_configs:
   colormuts: data/auspice_config_colormuts.json
   colordates: data/auspice_config_colordates.json
+  colorlineage: data/auspice_config_colorlineage.json
+  coloraddtlannotations: data/auspice_config_coloraddtlannotations.json
 
 # additional arguments to augur export
 augur_export_args:

@@ -1,0 +1,33 @@
+{ 
+  "display_defaults": {
+    "color_by": "addtl_annotations",
+    "tip_label": "strain"
+  },
+  "colorings": [
+    {
+      "key": "date",
+      "title": "collection date",
+      "type": "temporal"
+    },
+    {
+      "key": "addtl_annotations",
+      "title": "other annotations",
+      "type": "categorical"
+    },
+    {
+      "key": "haplotype_8782_28144",
+      "title": "haplotype 8782/28144",
+      "type": "categorical"
+    },
+    {
+      "key": "mutations_from_recCA",
+      "title": "mutations from recCA",
+      "type": "continuous"
+    },
+    {
+      "key": "mutations_from_RaTG13",
+      "title": "mutations from RaTG13",
+      "type": "continuous"
+    }
+  ]
+}
